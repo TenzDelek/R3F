@@ -1,13 +1,20 @@
+import { useFrame } from "@react-three/fiber"
+import { useRef } from "react"
 
 const Experience = () => {
+  const cubeRef = useRef<any>(null);
+  useFrame((state, delta) => {
+    cubeRef.current.rotation.y += delta // for such thing like animation dont use state, use ref directly
+    //we use delta to make animation sync. because every person have different fps
+  })
   return (
     <>
-      <mesh scale={2} rotation-y={Math.PI / 4} position={[0, 0, 0]}>
+      <mesh ref={cubeRef} scale={2} rotation-y={Math.PI / 4} position={[0, 0, 0]}>
         {/* <sphereGeometry args={[1, 32, 32]} /> */}
-        <boxGeometry scale={2} />
+        <boxGeometry />
         <meshBasicMaterial wireframe color="mediumpurple" />
       </mesh>
-      <mesh rotation-x={-Math.PI / 2} position={[0, -1, 0]} scale={10}>
+      <mesh rotation-x={-Math.PI / 2} position={[0, -1, 0]} scale={10}> {/* roation to - to see the face */}
         <planeGeometry />
         <meshBasicMaterial color="greenyellow" />
       </mesh>
