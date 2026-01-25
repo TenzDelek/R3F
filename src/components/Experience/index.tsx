@@ -1,3 +1,4 @@
+import { OrbitControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
 
@@ -9,14 +10,17 @@ const Experience = () => {
   })
   return (
     <>
+      <OrbitControls enableDamping makeDefault />
+      <directionalLight position={[1, 2, 3]} intensity={1.5} />
+      <ambientLight intensity={1.5} />
       <mesh ref={cubeRef} scale={2} rotation-y={Math.PI / 4} position={[0, 0, 0]}>
         {/* <sphereGeometry args={[1, 32, 32]} /> */}
         <boxGeometry />
-        <meshBasicMaterial wireframe color="mediumpurple" />
+        <meshStandardMaterial color="mediumpurple" />
       </mesh>
       <mesh rotation-x={-Math.PI / 2} position={[0, -1, 0]} scale={10}> {/* roation to - to see the face */}
         <planeGeometry />
-        <meshBasicMaterial color="greenyellow" />
+        <meshStandardMaterial color="greenyellow" />
       </mesh>
     </>
   )
