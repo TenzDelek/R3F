@@ -12,7 +12,7 @@ const App = () => {
         , toneMapping: THREE.NoToneMapping,
         outputColorSpace: THREE.SRGBColorSpace
       }} // keep it as true (default) , we do it here false just for demo
-      camera={{ fov: 45, near: 0.1, far: 200, position: [3, 2, 6] }}>
+      camera={{ fov: 65, near: 0.1, far: 200, position: [0, 2, 6] }}>
       <Experience />
     </Canvas>
   )
