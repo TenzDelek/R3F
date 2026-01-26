@@ -6,6 +6,10 @@ import Custom from "../Custom/Index"
 const Experience = () => {
   const cubeRef = useRef<any>(null);
   useFrame((state, delta) => {
+    const angle = state.clock.elapsedTime;
+    state.camera.position.x = Math.sin(angle) * 8;
+    state.camera.position.z = Math.cos(angle) * 8;
+    state.camera.lookAt(0, 0, 0);
     cubeRef.current.rotation.y += delta // for such thing like animation dont use state, use ref directly
     //we use delta to make animation sync. because every person have different fps
   })
