@@ -1,10 +1,11 @@
-import { TransformControls, OrbitControls, PivotControls } from "@react-three/drei";
+import { TransformControls, OrbitControls, PivotControls, Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
 import Custom from "../Custom/Index"
 
 const Experience = () => {
   const cubeRef = useRef<any>(null);
+  const sphereRef = useRef<any>(null);
   useFrame((state, delta) => {
     const angle = state.clock.elapsedTime;
     // state.camera.position.x = Math.sin(angle) * 8;
@@ -18,10 +19,16 @@ const Experience = () => {
       <OrbitControls enableDamping makeDefault />
       <directionalLight position={[1, 2, 3]} intensity={1.5} />
       <ambientLight intensity={1.5} />
-      <PivotControls anchor={[0, 1, 0]} lineWidth={2} scale={2} depthTest={false}>
-        <mesh position={[-3, 0, 0]}>
+      <PivotControls anchor={[0, 1, 0]} lineWidth={2} scale={1} depthTest={false}>
+        <mesh ref={sphereRef} position={[-3, 0, 0]}>
           <sphereGeometry />
           <meshStandardMaterial color="red" />
+          <Html
+            wrapperClass="label"
+            position={[1, 1, 0]}
+            occlude={[sphereRef, cubeRef]} // when the object is occluded, the html will not be visible
+            center // center is to center the pivot 
+            distanceFactor={5}> This is a sphere</Html> {/*  distanceFactor is to control prespective. */}
         </mesh>
       </PivotControls>
       <mesh ref={cubeRef} scale={2} rotation-y={Math.PI / 4} position={[2, 0, 0]}>
