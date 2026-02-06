@@ -1,4 +1,4 @@
-import { TransformControls, OrbitControls, PivotControls, Html } from "@react-three/drei";
+import { TransformControls, OrbitControls, PivotControls, Html, Text, Float } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
 import Custom from "../Custom/Index"
@@ -41,6 +41,11 @@ const Experience = () => {
         <planeGeometry />
         <meshStandardMaterial color="greenyellow" />
       </mesh>
+      <Float floatIntensity={2} rotationIntensity={2} speed={2}>
+        <Text font="./src/assets/Atisha.ttf" maxWidth={1} textAlign="center" fontSize={1} color="salmon" position={[0, 2, 0]}>ཏེན་འཛིན་བདེ་ལེགས།
+          <meshNormalMaterial />
+        </Text>
+      </Float>
       <Custom verticesCount={10} />
     </>
   )
