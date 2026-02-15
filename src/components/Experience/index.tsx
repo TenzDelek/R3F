@@ -1,4 +1,4 @@
-import { TransformControls, OrbitControls, PivotControls, Html, Text, Float } from "@react-three/drei";
+import { MeshReflectorMaterial, TransformControls, OrbitControls, PivotControls, Html, Text, Float } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
 import Custom from "../Custom/Index"
@@ -39,7 +39,13 @@ const Experience = () => {
       <TransformControls object={cubeRef} mode="scale" /> {/* mode is rotate, translate, scale */}
       <mesh rotation-x={-Math.PI / 2} position={[0, -1, 0]} scale={10}> {/* roation to - to see the face */}
         <planeGeometry />
-        <meshStandardMaterial color="greenyellow" />
+        <MeshReflectorMaterial resolution={512}
+          blur={[1000, 1000]}
+          mixBlur={1}
+          mirror={0.15}
+          color="greenyellow"
+        /> {/* only works on plane geometry*/}
+        {/* <meshStandardMaterial color="greenyellow" /> */}
       </mesh>
       <Float floatIntensity={2} rotationIntensity={2} speed={2}>
         <Text font="./src/assets/Atisha.ttf" maxWidth={1} textAlign="center" fontSize={1} color="salmon" position={[0, 2, 0]}>ཏེན་འཛིན་བདེ་ལེགས།
